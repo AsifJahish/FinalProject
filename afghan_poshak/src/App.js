@@ -4,6 +4,7 @@ import SignInForm from './signin/SignInForm';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from './header/Header';  // Import the Navbar component
 
+import ProductList from './products/ProductList'; 
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Routes>
           <Route path="/signin" element={<SignInForm />} />
           <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/products" element={<ProductList />} />  {/* Product List Route */}
+          <Route exact path="/" element={<ProductList />} /> {/* Default route */}
         
         </Routes>
       </div>
