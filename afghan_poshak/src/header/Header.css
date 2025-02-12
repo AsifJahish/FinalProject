@@ -1,0 +1,98 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Navbar container */
+  .navbar {
+    width: 100%; /* Ensure full width */
+    position: fixed; /* Fixed position to stay at the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff; /* Optional: makes sure the navbar has a white background */
+    z-index: 1000; /* Ensures the navbar stays above other content */
+  }
+  
+  /* Wrapper container for centering and spacing */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px; /* Same as h-16 */
+  }
+  
+  /* Logo and home link */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.25rem; /* Text size of 'AfghanPoshak' */
+    font-weight: 600; /* Font weight for logo */
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* SVG icons */
+  .home-icon,
+  .cart-icon {
+    height: 20px;
+    width: 20px;
+  }
+  
+  /* Navigation links section */
+  .nav-links {
+    display: none;
+    gap: 2rem;
+  }
+  
+  .nav-link {
+    font-size: 0.875rem; /* Text size for the nav items */
+    font-weight: 500;   /* Medium font weight */
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: #1d72b8; /* Primary color on hover */
+  }
+  
+  /* Cart section */
+  .cart {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f8f8f8;
+    padding: 8px 16px;
+    border-radius: 9999px; /* Full rounded corners */
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .cart-text {
+    font-weight: 500;
+  }
+  
+  .cart-count {
+    color: #f44336; /* Red color for cart item count */
+  }
+  
+  /* Responsive design for larger screens */
+  @media (min-width: 768px) {
+    .nav-links {
+      display: flex;
+    }
+  }
+  
+  /* Add padding to the content below to avoid overlap with the navbar */
+  body {
+    padding-top: 64px; /* Adjust this value based on the navbar height */
+  }
+  
