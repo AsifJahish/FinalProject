@@ -10,6 +10,11 @@ from rest_framework.views import APIView
 from .serializers import UserSignupSerializer
 from django.contrib.auth import get_user_model
 
+from django.contrib.auth import authenticate
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+
 User = get_user_model()
 
 class UserSignupView(APIView):
@@ -24,3 +29,49 @@ class UserSignupView(APIView):
         users = User.objects.all()
         serializer = UserSignupSerializer(users, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.contrib.auth import authenticate
+from django.http import JsonResponse
+import json
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+def user_signin(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        email = data.get("email")
+        password = data.get("password")
+
+        # Authenticate user
+        user = authenticate(email=email, password=password)
+
+        if user:
+            # Generate token
+            refresh = RefreshToken.for_user(user)
+            access_token = str(refresh.access_token)
+
+            # Return token in the response
+            return JsonResponse({
+                "message": "Login successful!",
+                "token": access_token  # Send the token back
+            }, status=200)
+        else:
+            return JsonResponse({"error": "Invalid credentials"}, status=400)
+
+
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.response import Response
+
+def user_login(request):
+    # Your login logic here (e.g., check credentials)
+    
+    if credentials_are_valid:
+        user = get_user_from_credentials(request)  # Assuming you have a way to fetch the user
+        refresh = RefreshToken.for_user(user)  # Create refresh and access tokens
+        return Response({
+            'token': str(refresh.access_token)  # Send token in response
+        })
+    else:
+        return Response({'detail': 'Invalid credentials'}, status=400)

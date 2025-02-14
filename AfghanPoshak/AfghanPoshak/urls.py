@@ -24,6 +24,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('accounts.urls')),  
     path('products/', include('products.urls')),
+
+
+    path('rating/', include('star_rating.urls')),
+    path('reviews/', include('reviews.urls')),
 ]
 # Serve media files in development
 if settings.DEBUG:

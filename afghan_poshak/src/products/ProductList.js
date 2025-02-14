@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ProductList.css";
 
-function ProductCard({ name, price, image }) {
+function ProductCard({ id, name, price, image }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/product/${id}`);
+  };
+
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={handleClick}>
       <div className="image-container">
-        <img
-          src={image || "/placeholder.svg"}
-          alt={name}
-          className="product-image"
-        />
+        <img src={image || "/placeholder.svg"} alt={name} className="product-image" />
       </div>
       <div className="product-info">
         <h3 className="product-name">{name}</h3>
-        <div className="product-price">${price}</div>
+        <div className="product-price">AF {price}</div>
         <div className="button-group">
           <button className="btn">Add to Cart</button>
-          <button className="btn">Save for Later</button>
         </div>
       </div>
     </div>
@@ -32,7 +34,6 @@ export default function ProductList() {
       try {
         const response = await fetch("http://127.0.0.1:8000/products/products/");
         const data = await response.json();
-
         setProducts(data);
       } catch (error) {
         console.error("Error fetching products:", error);
