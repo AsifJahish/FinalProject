@@ -7,6 +7,8 @@ import Header from './header/Header';  // Import the Navbar component
 import ProductList from './products/ProductList'; 
 import ProductDetail from "./productdetail/ProductDetail";
 
+import CartItem from "./cartItem/Cart";
+
 
 
 function App() {
@@ -24,7 +26,9 @@ function App() {
           <Route exact path="/" element={<ProductList />} /> {/* Default route */}
 
           <Route path="/" element={<ProductList />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route className= "detail"path="/product/:id" element={<ProductDetail />} />
+
+          <Route className= "cartApp" path="/cart" element={<CartItem/>} />
 
 
         </Routes>

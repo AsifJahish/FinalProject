@@ -25,9 +25,10 @@ urlpatterns = [
     path('users/', include('accounts.urls')),  
     path('products/', include('products.urls')),
 
-
     path('rating/', include('star_rating.urls')),
     path('reviews/', include('reviews.urls')),
+    path('cart/', include('cart.urls')),
+
 ]
 # Serve media files in development
 if settings.DEBUG:

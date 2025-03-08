@@ -49,12 +49,16 @@ INSTALLED_APPS = [
 
     'accounts',
     'products',
-
+    
+    'cart',
  
     'star_rating',
     'reviews',
 
     'rest_framework',
+
+    'rest_framework.authtoken',
+    'dj_rest_auth', 
 
 
     'corsheaders',  #
@@ -62,21 +66,17 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
+
 }
 
+CORS_ALLOW_ALL_ORIGINS = True  # Use only in development
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework.authentication.TokenAuthentication',
-#     ),
-#     'DEFAULT_PERMISSION_CLASSES': (
-#         'rest_framework.permissions.IsAuthenticated',
-#     ),
-# }
+
 
 MIDDLEWARE = [
 
