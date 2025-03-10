@@ -9,6 +9,12 @@ import ProductDetail from "./productdetail/ProductDetail";
 
 import CartItem from "./cartItem/Cart";
 
+import Profile from "./profile/Profile";
+
+import About from "./about/About";
+
+import Help from "./help/Help";
+
 
 
 function App() {
@@ -29,6 +35,14 @@ function App() {
           <Route className= "detail"path="/product/:id" element={<ProductDetail />} />
 
           <Route className= "cartApp" path="/cart" element={<CartItem/>} />
+
+
+          <Route className= "profile" path="/profile" element={<Profile/>} />
+
+          <Route className= "about" path="/about" element={<About/>} />
+
+          <Route className= "help" path="/help" element={<Help/>} />
+
 
 
         </Routes>
